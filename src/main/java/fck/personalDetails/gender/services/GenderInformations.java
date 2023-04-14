@@ -43,10 +43,10 @@ public class GenderInformations implements IGenderInformations {
 
     private GenderTaskCollection fetchInformations(String name){
         try {
-            var agifyFuture = _httpFetch.fetch(_apiInfo.agifyUrl(name), AgifyResponse.class);
-            var genderizeFuture = _httpFetch.fetch(_apiInfo.genderize(name),GenderizeResponse.class);
-            var nationalizeFuture = _httpFetch.fetch(_apiInfo.nationalize(name), NationalizeResponse.class);
-            return new GenderTaskCollection(agifyFuture,genderizeFuture,nationalizeFuture);
+            var agifyTask = _httpFetch.fetch(_apiInfo.agifyUrl(name), AgifyResponse.class);
+            var genderizeTask = _httpFetch.fetch(_apiInfo.genderize(name),GenderizeResponse.class);
+            var nationalizeTask = _httpFetch.fetch(_apiInfo.nationalize(name), NationalizeResponse.class);
+            return new GenderTaskCollection(agifyTask,genderizeTask,nationalizeTask);
         } catch (Exception e){
             System.out.println(e.getMessage());
             return null;
