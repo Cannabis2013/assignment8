@@ -1,4 +1,4 @@
-package fck.personalDetails.gender.services;
+package fck.personalDetails.services.apiInfo;
 
 public interface IGenderApiInfo {
     String agifyUrl(String param);
@@ -6,4 +6,5 @@ public interface IGenderApiInfo {
     String genderize(String param);
 
     String nationalize(String param);
+    String restCountry(String code);
 }

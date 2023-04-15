@@ -1,4 +1,4 @@
-package fck.personalDetails.gender.dtos;
+package fck.personalDetails.dtos.agify;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

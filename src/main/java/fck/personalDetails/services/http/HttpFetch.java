@@ -1,6 +1,6 @@
-package fck.personalDetails.shared.services.http;
+package fck.personalDetails.services.http;
 
-import fck.personalDetails.shared.converters.IJsonDeserializer;
+import fck.personalDetails.converters.json.IJsonDeserializer;
 import org.springframework.stereotype.Service;
 import java.net.URI;
 import java.net.http.HttpClient;

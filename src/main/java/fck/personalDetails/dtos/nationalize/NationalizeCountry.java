@@ -1,16 +1,15 @@
-package fck.personalDetails.gender.dtos;
+package fck.personalDetails.dtos.nationalize;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class NationalizeResponse {
-    private List<NationalizeCountry> country;
-    private String name;
+public class NationalizeCountry {
+    private String country_id;
+    private double probability;
 }

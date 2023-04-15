@@ -1,19 +1,32 @@
-package fck.personalDetails.gender.converters;
+package fck.personalDetails.converters.gender;
 
-import fck.personalDetails.gender.dtos.*;
-import fck.personalDetails.gender.services.GenderTaskCollection;
+import fck.personalDetails.dtos.*;
+import fck.personalDetails.dtos.agify.AgifyResponse;
+import fck.personalDetails.dtos.genderize.GenderizeResponse;
+import fck.personalDetails.dtos.nationalize.NationalizeCountry;
+import fck.personalDetails.dtos.nationalize.NationalizeResponse;
+import fck.personalDetails.dtos.restCountries.RestCountryResponse;
+import fck.personalDetails.services.http.GenderTaskCollection;
 import org.springframework.stereotype.Service;
 
 @Service
-public class GenderResponseConverter {
+public class GenderResponseAssembler {
     public GenderResponse fromTaskCollection(GenderTaskCollection taskCollection) {
+        if(taskCollection == null)
+            return null;
+        return toResponse(taskCollection);
+    }
+
+    private GenderResponse toResponse(GenderTaskCollection taskCollection){
         AgifyResponse agify;
         GenderizeResponse genderize;
         NationalizeResponse nationalize;
+        RestCountryResponse restCountries;
         try {
             agify = taskCollection.agifyResult();
             genderize = taskCollection.genderizeResult();
             nationalize = taskCollection.nationalizeResult();
+            restCountries = taskCollection.restCountriesResult();
         } catch (Exception e){
             return null;
         }
@@ -23,7 +36,7 @@ public class GenderResponseConverter {
                 .age(agify.getAge())
                 .ageCount(agify.getCount())
                 .countryProbability(countryProbability(nationalize))
-                .country(countryCode(nationalize))
+                .country(countryInfo(restCountries,nationalize))
                 .gender(genderize.getGender())
                 .name(agify.getName())
                 .build();
@@ -48,7 +61,13 @@ public class GenderResponseConverter {
         return countries.stream().findFirst().orElse(null);
     }
 
-    int toPercentage(double p){
+    private int toPercentage(double p){
         return (int) (p*100);
+    }
+
+    private String countryInfo(RestCountryResponse restCountry, NationalizeResponse nationalize){
+        var name = restCountry.getCountryDetails().getCountryName();
+        var code = nationalize.getCountry().get(0).getCountry_id();
+        return String.format("%s (%s)",name,code);
     }
 }

@@ -1,4 +1,4 @@
-package fck.personalDetails.welcome.api;
+package fck.personalDetails.apis;
 
 
 import org.springframework.web.bind.annotation.GetMapping;

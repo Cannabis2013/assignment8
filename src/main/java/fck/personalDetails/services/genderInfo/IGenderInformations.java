@@ -1,6 +1,6 @@
-package fck.personalDetails.gender.services;
+package fck.personalDetails.services.genderInfo;
 
-import fck.personalDetails.gender.dtos.GenderResponse;
+import fck.personalDetails.dtos.GenderResponse;
 
 import java.util.List;
 

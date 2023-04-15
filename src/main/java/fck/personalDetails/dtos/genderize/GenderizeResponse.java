@@ -1,4 +1,4 @@
-package fck.personalDetails.gender.dtos;
+package fck.personalDetails.dtos.genderize;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class NationalizeCountry {
-    private String country_id;
+public class GenderizeResponse {
+    private int count;
+    private String name;
+    private String gender;
     private double probability;
 }

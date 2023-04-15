@@ -1,6 +1,4 @@
-package fck.personalDetails.shared.services.http;
-
-import java.util.concurrent.ExecutionException;
+package fck.personalDetails.services.http;
 
 public interface IHttpFetch {
     <T> Task<T> fetch(String uri, Class<T> descriptor) throws Exception;

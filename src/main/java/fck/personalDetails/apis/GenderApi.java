@@ -1,13 +1,11 @@
-package fck.personalDetails.gender.apis;
+package fck.personalDetails.apis;
 
-import fck.personalDetails.gender.dtos.GenderResponse;
-import fck.personalDetails.gender.services.IGenderInformations;
+import fck.personalDetails.dtos.GenderResponse;
+import fck.personalDetails.services.genderInfo.IGenderInformations;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpServerErrorException;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
